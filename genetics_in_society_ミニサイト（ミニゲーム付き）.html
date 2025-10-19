@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>遺伝学は社会でどう役立つ？｜やさしく学べるミニサイト & ミニゲーム</title>
+  <meta name="description" content="GABAの多いトマト、毒性の低いジャガイモ、ワクチン、PCRなど—遺伝学の社会での使われ方をやさしく紹介。ドラッグ&ドロップのミニゲーム付き！" />
+  <style>
+    :root{
+      --bg:#fffefa; --ink:#1b1b1f; --muted:#6b7180; --card:#ffffff; --brand:#5b8def;
+      --accent:#7cc08a; --warn:#f7b267; --danger:#ff7b7b; --shadow:0 10px 24px rgba(0,0,0,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif}
+    a{color:var(--brand)}
+    header{position:sticky;top:0;backdrop-filter:saturate(150%) blur(6px);background:rgba(255,255,255,.7);border-bottom:1px solid #eee}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    .row{display:grid;gap:16px}
+    @media(min-width:860px){.row-2{grid-template-columns:1.2fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}}
+    .hero{display:grid;gap:16px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#eef4ff;border:1px solid #dfe9ff;font-size:13px}
+    h1{font-size:clamp(26px,3.5vw,40px);line-height:1.1;margin:8px 0}
+    p.lead{font-size:clamp(16px,2.2vw,18px);color:var(--muted)}
+    .card{background:var(--card);border:1px solid #eee;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:#f6f7f9;font-size:12px;border:1px solid #e7e8ea}
+    .kpi{display:flex;gap:8px;align-items:center}
+    .bar{height:10px;border-radius:999px;background:#eef1f7;position:relative}
+    .bar>i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--accent))}
+    .illus{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(120deg,#fff4e6,#f0fff4);display:grid;place-items:center;font-size:52px}
+    .section-title{margin:28px 0 8px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:16px}
+    .tag{display:inline-block;font-size:12px;background:#eef7f0;color:#1f5c2e;border:1px solid #d6efd8;padding:4px 8px;border-radius:999px}
+    /* ミニゲーム */
+    .game{display:grid;gap:16px}
+    .boards{display:grid;gap:16px}
+    @media(min-width:860px){.boards{grid-template-columns:1fr 40px 1fr;align-items:center}}
+    .col{display:grid;gap:12px}
+    .slot,.tile{padding:12px;border-radius:12px;border:2px dashed #d9dbe3;background:#fff}
+    .tile{border-style:solid;border-color:#cfd5ff;cursor:grab;user-select:none;box-shadow:var(--shadow)}
+    .slot[data-accept="1"]{border-color:#7cc08a;background:#f6fff8}
+    .slot[data-accept="0"]{border-color:#ffdddd;background:#fff6f6}
+    .tile[aria-grabbed="true"]{opacity:.8}
+    .score{display:flex;gap:12px;align-items:center}
+    .btn{appearance:none;border:none;background:var(--brand);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer;box-shadow:var(--shadow);font-weight:600}
+    .btn.alt{background:#475569}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+    .sr-only{position:absolute;width:1px;height:1px;margin:-1px;border:0;padding:0;clip:rect(0 0 0 0);overflow:hidden}
+    footer{padding:40px 0 60px;color:var(--muted)}
+    .notice{font-size:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-size:22px">🧬</span><strong>遺伝学 × 社会</strong></div>
+      <nav style="display:flex;gap:12px;font-size:14px"><a href="#apps">社会での活用例</a><a href="#game">ミニゲーム</a><a href="#faq">Q&A</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero row row-2" aria-labelledby="hero-title">
+      <div>
+        <div class="badge">やさしく学ぶ · 中高生向け · 5分で理解</div>
+        <h1 id="hero-title">遺伝学は、あなたの身近で <span style="background:linear-gradient(90deg,#fff1b8,#c8ffd7);padding:0 .35em;border-radius:12px">もう役立っています</span></h1>
+        <p class="lead">GABAの多いトマト、毒性の低いジャガイモ、感染症を調べるPCR、体の免疫にヒントを与えるワクチン…。<br>このページでは「何に役立つの？どう安全に使うの？」を、ミニゲームで楽しく学べます。</p>
+        <div class="kpi" aria-hidden="true">
+          <span class="pill">🔬 食・医療・環境</span>
+          <span class="pill">🧩 ミニゲームで理解</span>
+          <span class="pill">📱 スマホOK</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="illus" aria-hidden="true">🍅🥔💉🧪</div>
+        <p class="muted" style="margin:8px 0 0">※ このページの説明は教育目的の一般的な内容です。実際の設計・運用は専門家による安全性評価や制度に従って行われます。</p>
+      </div>
+    </section>
+
+    <!-- 活用例カード -->
+    <section id="apps" class="section">
+      <h2 class="section-title">社会での活用例</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>🍅 GABAの多いトマト</h3>
+          <p>食べ物に含まれるGABA（ギャバ）という成分を増やすことで、<strong>リラックスに役立つ</strong>ことが期待されるトマトの開発が進んでいます。品種改良やゲノム編集などの方法が使われます。</p>
+          <div class="tag">目的：栄養・機能性の向上</div>
+          <div style="margin-top:10px">
+            <div class="bar" aria-label="GABAの相対スコア"><i style="width:78%"></i></div>
+            <small class="muted">例：GABA量の目標値を高める設計</small>
+          </div>
+        </article>
+        <article class="card">
+          <h3>🥔 毒性の低いジャガイモ</h3>
+          <p>ジャガイモは天然の<strong>苦味・毒性物質（グリコアルカロイド）</strong>を少し含むことがあります。遺伝的な工夫でその量を減らし、<strong>食の安全</strong>に役立てる研究が行われています。</p>
+          <div class="tag">目的：安全性の向上</div>
+          <div style="margin-top:10px">
+            <div class="bar" aria-label="毒性の相対スコア"><i style="width:20%"></i></div>
+            <small class="muted">例：有害成分の合成経路を下げる設計</small>
+          </div>
+        </article>
+        <article class="card">
+          <h3>💉 ワクチン</h3>
+          <p><strong>免疫の練習問題</strong>を体に渡すように設計されたワクチン（例：mRNAワクチン）では、体内で一時的に目印となるタンパク質の一部を作らせ、<strong>本物に出会う前に備える</strong>ことを目指します。</p>
+          <div class="tag">目的：感染症の重症化予防</div>
+        </article>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <article class="card">
+          <h3>🧪 PCR（遺伝子検査）</h3>
+          <p>PCRはDNAやRNAの一部を<strong>何億倍にも増やして</strong>調べる方法。とてもわずかな量でも検出できるため、<strong>感染症や研究</strong>で広く使われています。</p>
+          <div class="tag">目的：極めて敏感な検出</div>
+        </article>
+        <article class="card">
+          <h3>🧫 ほかにもたくさん</h3>
+          <p>微生物の力でプラスチックを分解する研究、環境に強い作物、個別化医療など、遺伝学の可能性は広がっています。</p>
+          <div class="tag">目的：環境・産業・医療の発展</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ミニゲーム -->
+    <section id="game" class="section">
+      <h2 class="section-title">🧩 ミニゲーム：<br>「応用例 ↔ 目的」をマッチさせよう！</h2>
+      <p class="muted">ドラッグ&ドロップでも、キーボードでも遊べます（Tab → Space/Enter）。</p>
+      <div class="game card" role="application" aria-describedby="gameDesc">
+        <p id="gameDesc" class="sr-only">左のカードを右の目的スロットに対応づけます。正解すると緑、不正解は赤で表示されます。</p>
+        <div class="boards">
+          <div class="col" id="leftCol" aria-label="応用例のカード" role="list">
+            <!-- JSで注入 -->
+          </div>
+          <div style="text-align:center" aria-hidden="true">➡️</div>
+          <div class="col" id="rightCol" aria-label="目的のスロット" role="list">
+            <!-- JSで注入 -->
+          </div>
+        </div>
+        <div class="score">
+          <button id="shuffle" class="btn" type="button">シャッフル</button>
+          <button id="reset" class="btn alt" type="button">リセット</button>
+          <strong>スコア：<span id="score">0</span>/<span id="total">0</span></strong>
+          <span id="feedback" class="muted" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <details class="card" style="margin-top:16px">
+        <summary><strong>遊び方・学びのポイント</strong></summary>
+        <ul>
+          <li>🍅 <strong>GABAトマト</strong>：栄養・機能性を高めて、食の楽しみや健康づくりに貢献。</li>
+          <li>🥔 <strong>低毒性ジャガイモ</strong>：天然に含まれる有害成分を減らし、安全性の向上へ。</li>
+          <li>🧪 <strong>PCR</strong>：とても少ない遺伝子量を増やし、検出できるようにする。</li>
+          <li>💉 <strong>ワクチン</strong>：免疫に前もって練習相手を示し、本番に備える。</li>
+        </ul>
+        <p class="notice">※ 実際の開発・導入では、科学的な安全性評価・制度・倫理・社会的対話が重要です。このサイトは教育用のやさしい入門解説です。</p>
+      </details>
+    </section>
+
+    <!-- Q&A -->
+    <section id="faq" class="section">
+      <h2 class="section-title">よくある質問</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Q. ゲノム編集って「遺伝子を追加」するの？</h3>
+          <p>A. 方法はいくつかあります。<strong>もとの遺伝子の一部を狙って変える</strong>こともあれば、別の方法で新しい遺伝情報を加える研究もあります。目的や安全性評価の手順は用途で異なります。</p>
+        </article>
+        <article class="card">
+          <h3>Q. 安全性はどう考えるの？</h3>
+          <p>A. 食品では、<strong>成分・栄養・アレルゲン・予期せぬ変化</strong>などを確かめます。医療では、<strong>有効性・副反応・品質</strong>などを段階的に検証します。<em>科学＋制度＋社会の対話</em>がそろってこそ、安心につながります。</p>
+        </article>
+        <article class="card">
+          <h3>Q. PCRは何の略？何がわかる？</h3>
+          <p>A. <strong>Polymerase Chain Reaction</strong>（ポリメラーゼ連鎖反応）。微量なDNA/RNAの一部を増やして検出・確認に使います。感染症、研究、法医学など幅広い現場で活躍中です。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div>© 2025 遺伝学ミニサイト · 教育目的の一般解説</div>
+        <div class="notice">記載内容は平易化しています。授業・展示で使う場合は引用元の一次情報や各国のガイドラインもあわせて確認してください。</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ---- ミニゲーム データ ----
+    const ITEMS = [
+      { id:"a", emoji:"🍅", name:"GABAの多いトマト", match:"栄養・機能性の向上", tip:"GABAという成分の量に着目。食の楽しみと健康づくりに役立つ設計。" },
+      { id:"b", emoji:"🥔", name:"毒性の低いジャガイモ", match:"安全性の向上", tip:"天然に含まれるグリコアルカロイド等を減らす方向。" },
+      { id:"c", emoji:"🧪", name:"PCR（遺伝子検査）", match:"極めて敏感な検出", tip:"DNA/RNAの一部を増やして調べる。" },
+      { id:"d", emoji:"💉", name:"ワクチン", match:"感染症の重症化予防", tip:"免疫に『練習相手』を提示して備える。" }
+    ];
+
+    const TARGETS = [
+      { id:"t1", label:"栄養・機能性の向上" },
+      { id:"t2", label:"安全性の向上" },
+      { id:"t3", label:"極めて敏感な検出" },
+      { id:"t4", label:"感染症の重症化予防" },
+    ];
+
+    const leftCol = document.getElementById('leftCol');
+    const rightCol = document.getElementById('rightCol');
+    const scoreEl = document.getElementById('score');
+    const totalEl = document.getElementById('total');
+    const feedbackEl = document.getElementById('feedback');
+
+    let score = 0; let total = ITEMS.length; totalEl.textContent = total;
+
+    function shuffle(array){
+      for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]]}
+    }
+
+    function render(){
+      leftCol.innerHTML = '';
+      rightCol.innerHTML = '';
+
+      const items = [...ITEMS];
+      const targets = [...TARGETS];
+      shuffle(items); shuffle(targets);
+
+      items.forEach(item=>{
+        const el = document.createElement('div');
+        el.className = 'tile';
+        el.draggable = true;
+        el.tabIndex = 0;
+        el.setAttribute('role','listitem');
+        el.setAttribute('aria-grabbed','false');
+        el.dataset.id = item.id; el.dataset.match = item.match;
+        el.innerHTML = `<strong>${item.emoji} ${item.name}</strong><div class="muted" style="font-size:12px">ヒント：${item.tip}</div>`;
+        // drag
+        el.addEventListener('dragstart', e=>{
+          e.dataTransfer.setData('text/plain', JSON.stringify({id:item.id,match:item.match}));
+          e.dataTransfer.effectAllowed = 'move';
+          el.setAttribute('aria-grabbed','true');
+        });
+        el.addEventListener('dragend', ()=> el.setAttribute('aria-grabbed','false'));
+        // keyboard pick & drop
+        el.addEventListener('keydown', e=>{
+          if(e.key===' '||e.key==='Enter'){
+            e.preventDefault();
+            el.classList.toggle('picked');
+            feedbackEl.textContent = el.classList.contains('picked') ? `${item.name} を選択。目的スロットで Enter。` : '';
+          }
+        });
+        leftCol.appendChild(el);
+      });
+
+      targets.forEach((t,i)=>{
+        const slot = document.createElement('div');
+        slot.className = 'slot';
+        slot.setAttribute('role','listitem');
+        slot.tabIndex = 0;
+        slot.dataset.label = t.label;
+        slot.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><strong>🎯 ${t.label}</strong><span class="muted" style="font-size:12px">ここにドロップ</span></div>`;
+        // drag-over
+        slot.addEventListener('dragover', e=>{ e.preventDefault(); e.dataTransfer.dropEffect = 'move'; });
+        slot.addEventListener('drop', e=>{
+          e.preventDefault();
+          const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+          check(slot, data);
+        });
+        // keyboard drop target
+        slot.addEventListener('keydown', e=>{
+          if(e.key===' '||e.key==='Enter'){
+            e.preventDefault();
+            const picked = document.querySelector('.tile.picked');
+            if(picked){
+              check(slot, { id:picked.dataset.id, match:picked.dataset.match });
+              picked.classList.remove('picked');
+            }
+          }
+        });
+        rightCol.appendChild(slot);
+      });
+      score = 0; scoreEl.textContent = score; feedbackEl.textContent = '';
+    }
+
+    function check(slot, data){
+      const ok = slot.dataset.label === data.match;
+      slot.dataset.accept = ok ? '1' : '0';
+      const already = slot.querySelector('.placed');
+      if(already) already.remove();
+      const card = document.querySelector(`.tile[data-id="${data.id}"]`);
+      if(card){
+        const ghost = card.cloneNode(true);
+        ghost.classList.remove('tile');
+        ghost.classList.add('placed');
+        ghost.style.border = 'none'; ghost.style.boxShadow = 'none'; ghost.style.padding='8px';
+        slot.appendChild(ghost);
+        card.remove();
+      }
+      if(ok){ score++; scoreEl.textContent = score; feedbackEl.textContent = '正解！ ナイスマッチ！'; }
+      else { feedbackEl.textContent = 'おしい！ もう一度チャレンジ。'; }
+      if(score===total){ feedbackEl.textContent = 'コンプリート！ 遺伝学の応用と目的をマスターしました🎉'; }
+    }
+
+    // Buttons
+    document.getElementById('shuffle').addEventListener('click', render);
+    document.getElementById('reset').addEventListener('click', ()=>{ render(); });
+
+    // 初期表示
+    render();
+  </script>
+</body>
+</html>
